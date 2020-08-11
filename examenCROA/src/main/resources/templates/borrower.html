@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Register</title>
+
+    <!--JQUERY-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    <!-- FRAMEWORK BOOTSTRAP -->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    
+    <!--Fontawesome icons-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
+    <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+
+</head>
+  <body>
+  	<div class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
+      <div class="container">
+        <a href="../" class="navbar-brand">Borrower</a>
+        
+        <form th:action="@{/logout}" method="post" class="form-inline my-2 my-lg-0">
+            <input type="submit" class="btn btn-primary my-2 my-sm-0" value="Cerrar Sesion"/>
+        </form>
+      </div>
+    </div>
+    <div class="container" style="margin-top: 70px;">
+    	<div class="row">
+    		<div class="col-lg-1">
+    			<h6>Name :</h6>
+    		</div>
+    		<div class="col-lg-4">
+    		 	<h6><span th:text="${userName}"></span></h6>
+    		</div>
+    	</div>
+		 
+		 <div class="row">
+    		<div class="col-lg-2">
+    			<h6>Amount Needed :</h6>
+    		</div>
+    		<div class="col-lg-4">
+    		 	<h6><span th:text="${amountNeeded}"></span></h6>
+    		</div>
+    	</div>
+    	
+    	<div class="row">
+    		<div class="col-lg-2">
+    			<h6>Amount Raised :</h6>
+    		</div>
+    		<div class="col-lg-4">
+    		 	<h6><span th:text="${amountRaised}"></span></h6>
+    		</div>
+    	</div>
+		
+		<br/>
+		
+		<p>List of people who lent you money</p>
+		<div class="bs-component">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Amount Lent</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  	<tr th:each="data : ${dataTable}">
+		                <td th:text="${data.name}"></td>
+		                <td th:text="${data.email}"></td>
+		                <td th:text="${data.amount}"></td>
+		            </tr>
+                </tbody>
+              </table> 
+        </div>
+                  
+	</div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+  </body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Register</title>
+
+    <!--JQUERY-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    <!-- FRAMEWORK BOOTSTRAP -->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    
+    <!--Fontawesome icons-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
+    <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+
+</head>
+  <body>
+  	<div class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
+      <div class="container">
+        <a href="../" class="navbar-brand">Register</a>
+        
+      </div>
+    </div>
+    <div class="container">
+    
+    <!-- Nav tabs -->
+	<ul class="nav nav-tabs" style="margin-top: 70px;">
+	  <li class="nav-item">
+	    <a class="nav-link active" data-toggle="tab" href="#lender">Lender</a>
+	  </li>
+	  <li class="nav-item">
+	    <a class="nav-link" data-toggle="tab" href="#borrower">Borrower</a>
+	  </li>
+	</ul>
+	
+	<!-- Tab panes -->
+	<div class="tab-content">
+	  <div class="tab-pane container active" id="lender">
+	  	<div class="row">
+	          <div class="col-lg-12">
+	            <div class="page-header">
+	              <h1 id="forms">Lender</h1>
+	            </div>
+	          </div>
+	        </div>
+	  
+	  		<div class="row">
+	          <div class="col-lg-6">
+	            <div class="bs-component">
+	              <form th:action="@{/register/lender}" th:object="${lenderDTO}" method="post">
+	                <fieldset>
+	                 <div class="form-group">
+	                    <label for="firstName">First Name</label>
+	                    <input type="hidden" th:field="*{id}" class="form-control" id="id">
+	                    <input type="text" class="form-control" th:field="*{firstName}" id="firstName" placeholder="Enter First Name">
+	                  </div>
+	                  <div class="form-group">
+	                    <label for="lastName">Last Name</label>
+	                    <input type="text" class="form-control" th:field="*{lastName}" id="lastName" placeholder="Enter Last Name">
+	                  </div>
+	                  <div class="form-group">
+	                    <label for="email">Email address</label>
+	                    <input type="email" class="form-control" th:field="*{email}" id="" aria-describedby="emailHelp" placeholder="Enter email">
+	                  </div>
+	                  <div class="form-group">
+	                    <label for="password">Password</label>
+	                    <input type="password" class="form-control" th:field="*{password}" id="password" placeholder="Password">
+	                  </div>
+	                 <div class="form-group">
+		                  <label for="exampleInputPassword1">Money</label>
+		                  <div class="input-group mb-3">
+		                    <div class="input-group-prepend">
+		                      <span class="input-group-text">$</span>
+		                    </div>
+		                    <input type="number" class="form-control"  th:field="*{money}" id="money" >
+		                    <div class="input-group-append">
+		                      <span class="input-group-text">.00</span>
+		                    </div>
+		                  </div>
+	                  </div>
+	                 </fieldset>
+	                 <button type="submit" class="btn btn-primary">Submit</button>
+	               </form>
+	             </div>
+	           </div>
+	         </div>
+	  
+	  </div>
+	  <div class="tab-pane container fade" id="borrower">
+	  	<div class="row">
+	          <div class="col-lg-12">
+	            <div class="page-header">
+	              <h1 id="forms">Borrower</h1>
+	            </div>
+	          </div>
+	        </div>
+	        
+	        <div class="row">
+	          <div class="col-lg-6">
+	            <div class="bs-component">
+	              <form  th:action="@{/register/borrower}" th:object="${borrowerDTO}" method="post">
+	                <fieldset>
+	                 <div class="form-group">
+	                    <label for="firstName">First Name</label>
+	                     <input type="hidden" th:field="*{id}" class="form-control" id="id">
+	                    <input type="text" class="form-control" th:field="*{firstName}" id="firstName" placeholder="Enter First Name">
+	                  </div>
+	                  <div class="form-group">
+	                    <label for="lastName">Last Name</label>
+	                    <input type="text" class="form-control" th:field="*{lastName}" id="lastName" placeholder="Enter Last Name">
+	                  </div>
+	                  <div class="form-group">
+	                    <label for="email">Email address</label>
+	                    <input type="email" class="form-control" th:field="*{email}" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+	                  </div>
+	                  <div class="form-group">
+	                    <label for="password">Password</label>
+	                    <input type="password" class="form-control" th:field="*{password}" id="password" placeholder="Password">
+	                  </div>
+	                  <div class="form-group">
+	                    <label for="lastName">Need Money for:</label>
+	                    <input type="text" class="form-control" th:field="*{need}" id="needMoney">
+	                  </div>
+	                  <div class="form-group">
+	                    <label for="lastName">Description</label>
+	                    <textarea class="form-control" id="description" th:field="*{description}" rows="3"> </textarea>
+	                  </div>
+	                  <div class="form-group">
+		                  <label for="exampleInputPassword1">Amount Needed</label>
+		                  <div class="input-group mb-3">
+		                    <div class="input-group-prepend">
+		                      <span class="input-group-text">$</span>
+		                    </div>
+		                    <input type="number" class="form-control" th:field="*{money}" id="money" >
+		                    <div class="input-group-append">
+		                      <span class="input-group-text">.00</span>
+		                    </div>
+		                  </div>
+	                  </div>
+	                 </fieldset>
+	                 <button type="submit" class="btn btn-primary">Submit</button>
+	               </form>
+	             </div>
+	           </div>
+	         </div>     
+	  </div>
+	  
+	</div>
+	
+		<div class="bs-component" th:if="${success}">
+          <div class="alert alert-dismissible alert-primary">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <h4 class="alert-heading">Success!</h4>
+            <p class="mb-0">the record has been entered successfully.</p>
+          </div>
+        </div>
+</div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+  </body>
+</html>
